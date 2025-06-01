@@ -30,8 +30,8 @@ class SisoStepSignal(AbsstractSignal):
 
     def generate_signal(self) -> ForcingSignal:
         sim_time: np.ndarray = self._sim_time()
-        u: np.ndarray = np.ones_like(sim_time)
-        u[u < self.delay] = 0
+        u: np.ndarray = np.ones((1, len(sim_time)))
+        # u[0, u < self.delay] = 0
         return ForcingSignal(
             t=sim_time,
             u=u
